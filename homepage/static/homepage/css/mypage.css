@@ -1,0 +1,17 @@
+body {
+    background: url('/static/homepage/images/other_page.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    font-family: 'Jua', sans-serif;
+}
+
+section {
+    margin-bottom: 150px;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+}

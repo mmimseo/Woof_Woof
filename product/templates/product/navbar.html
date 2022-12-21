@@ -1,0 +1,86 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">Woof Woof</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/">Product List</a>   <!--Blog,  prj/urls.py 주소 등록-->
+            </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/mypage/">My Page</a> <!--About_me, single_pages/urls.py 주소 등록-->
+            </li>
+            {% endif %}
+
+              <li class="nav-item">
+              <a class="nav-link" href="/company/">Company</a>
+            </li>
+          </ul>
+            <ul class="navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{user.username}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/accounts/logout/">LogOut</a>
+              </div>
+            </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LogIn</a>
+              {% endif %}
+            </ul>
+        </div>
+        </div>
+      </nav>
+
+      <!-- Login Modal -->
+            <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">LogIn</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-6"> <!--모달 버튼 왼쪽-->
+            <a role="button" class="btn btn-outline-dark btn-block btn-sm"
+             href="accounts/google/login/?process=login">
+              <i class="fa-brands fa-google"></i> LogIn with Google
+            </a>
+            <a role="button" class="btn btn-outline-dark btn-block btn-sm"
+              href="/accounts/naver/login/?process=login">
+              <i class="fa-solid fa-n"></i> LogIn with Naver
+            </a>
+            <a role="button" class="btn btn-outline-dark btn-block btn-sm"
+              href="/accounts/login/">
+              <i class="fa-regular fa-envelope"></i> LogIn with Email
+            </a>
+          </div>
+          <div class="col-6">  <!--모달 버튼 오른쪽-->
+            <a role="button" class="btn btn-outline-dark btn-block btn-sm"
+              href="/accounts/signup/">
+              <i class="fa-regular fa-envelope"></i> Signup with Email</a>
+          </div>
+          </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
